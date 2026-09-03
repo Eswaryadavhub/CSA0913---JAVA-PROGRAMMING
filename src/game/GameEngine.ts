@@ -33,6 +33,7 @@ import { soundManager } from './SoundManager';
 import { Tower } from './Tower';
 import { VisualEffectsManager } from './VisualEffects';
 import { WaveManager, WaveStatus } from './WaveManager';
+import { HeroSoldier } from './HeroSoldier';
 
 export interface GameEngineListener {
   onStateChange?: (state: GameState) => void;
@@ -66,6 +67,8 @@ export class GameEngine {
   public projectiles: Projectile[] = [];
   public selectedTower: Tower | null = null;
   public selectedTowerTypeToPlace: TowerType | null = null;
+  public hero: HeroSoldier;
+  public isHeroSelected: boolean = false;
 
   // Subsystems
   public economy: Economy;
@@ -96,6 +99,7 @@ export class GameEngine {
     this.economy = new Economy(300);
     this.waveManager = new WaveManager();
     this.vfx = new VisualEffectsManager();
+    this.hero = new HeroSoldier({ x: 7, y: 4 });
     this.resetMap();
     this.recalculateAStarPath();
   }
@@ -187,6 +191,8 @@ export class GameEngine {
     this.projectiles = [];
     this.selectedTower = null;
     this.selectedTowerTypeToPlace = null;
+    this.hero = new HeroSoldier({ x: 7, y: 4 });
+    this.isHeroSelected = false;
     this.vfx.clear();
     this.waveManager.reset();
     this.resetMap();
@@ -526,6 +532,19 @@ export class GameEngine {
       }
     }
 
+    // 2.5. Update hero mobile defender soldier
+    this.hero.update(scaledDt, this.enemies, (hero, enemy) => {
+      soundManager.playHit();
+      const fatal = enemy.takeDamage(hero.damage);
+      this.stats.damageDealt += hero.damage;
+      this.vfx.addDamageText(enemy.x, enemy.y, hero.damage);
+      this.vfx.addHitSparks(enemy.x, enemy.y, '#38bdf8', 6);
+      if (fatal) {
+        hero.onKill();
+        this.handleEnemyDefeated(enemy);
+      }
+    });
+
     // 3. Update towers (targeting & firing)
     for (const tower of this.towers) {
       tower.update(scaledDt, this.enemies, (proj) => {
@@ -746,33 +765,102 @@ export class GameEngine {
           ctx.closePath();
           ctx.fill();
         } else if (val === CellType.SPAWN) {
-          // Invasion Rift Portal
-          ctx.fillStyle = '#831843';
-          ctx.fillRect(px, py, CELL_SIZE, CELL_SIZE);
+          // 3D Dimensional Warp Gateway
+          ctx.save();
+          // Drop shadow
+          ctx.beginPath();
+          ctx.ellipse(px + 25, py + 38, 20, 9, 0, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+          ctx.fill();
+
+          // Obsidian Rift Pylons (left & right 3D pillars)
+          ctx.fillStyle = '#1e1b4b';
+          ctx.fillRect(px + 6, py + 8, 8, 30);
+          ctx.fillRect(px + 36, py + 8, 8, 30);
+          ctx.fillStyle = '#ec4899';
+          ctx.fillRect(px + 8, py + 12, 4, 22);
+          ctx.fillRect(px + 38, py + 12, 4, 22);
+
+          // Swirling Dimensional Void in center
+          const riftGrad = ctx.createRadialGradient(px + 25, py + 24, 2, px + 25, py + 24, 16);
+          riftGrad.addColorStop(0, '#f43f5e');
+          riftGrad.addColorStop(0.6, '#831843');
+          riftGrad.addColorStop(1, '#0f172a');
+          ctx.fillStyle = riftGrad;
+          ctx.beginPath();
+          ctx.arc(px + 25, py + 24, 15, 0, Math.PI * 2);
+          ctx.fill();
           ctx.strokeStyle = '#f43f5e';
-          ctx.lineWidth = 2;
-          ctx.strokeRect(px + 2, py + 2, CELL_SIZE - 4, CELL_SIZE - 4);
-          // Portal spiral effect
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          // Swirling energy arc
+          const pulse = (Date.now() / 300) % (Math.PI * 2);
           ctx.beginPath();
-          ctx.arc(px + CELL_SIZE / 2, py + CELL_SIZE / 2, 14, 0, Math.PI * 2);
-          ctx.fillStyle = '#f43f5e';
-          ctx.fill();
+          ctx.arc(px + 25, py + 24, 12, pulse, pulse + Math.PI);
+          ctx.strokeStyle = '#fbcfe8';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.restore();
         } else if (val === CellType.BASE) {
-          // Player Headquarters / Crystal
-          ctx.fillStyle = '#1e3a8a';
-          ctx.fillRect(px, py, CELL_SIZE, CELL_SIZE);
-          ctx.strokeStyle = '#60a5fa';
-          ctx.lineWidth = 2;
-          ctx.strokeRect(px + 2, py + 2, CELL_SIZE - 4, CELL_SIZE - 4);
-          // Crystal diamond
-          ctx.fillStyle = '#38bdf8';
+          // 3D Citadel Headquarters Fortress
+          ctx.save();
+          // Deep fortress ground shadow
           ctx.beginPath();
-          ctx.moveTo(px + CELL_SIZE / 2, py + 8);
-          ctx.lineTo(px + CELL_SIZE - 8, py + CELL_SIZE / 2);
-          ctx.lineTo(px + CELL_SIZE / 2, py + CELL_SIZE - 8);
-          ctx.lineTo(px + 8, py + CELL_SIZE / 2);
-          ctx.closePath();
+          ctx.ellipse(px + 26, py + 38, 22, 10, 0, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.65)';
           ctx.fill();
+
+          // 3D Extruded Fortress Citadel Wall (Outer Bastion)
+          const baseGrad = ctx.createLinearGradient(px + 4, py + 14, px + 46, py + 46);
+          baseGrad.addColorStop(0, '#1e3a8a');
+          baseGrad.addColorStop(0.5, '#0284c7');
+          baseGrad.addColorStop(1, '#0f172a');
+          ctx.fillStyle = baseGrad;
+          ctx.beginPath();
+          ctx.roundRect(px + 4, py + 14, 42, 28, 6);
+          ctx.fill();
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Corner Defense Turret Emplacements
+          ctx.fillStyle = '#60a5fa';
+          ctx.fillRect(px + 4, py + 14, 8, 8);
+          ctx.fillRect(px + 38, py + 14, 8, 8);
+          ctx.fillRect(px + 4, py + 34, 8, 8);
+          ctx.fillRect(px + 38, py + 34, 8, 8);
+
+          // Central Command Reactor Core with Floating Crystal Spire
+          const crystalY = py + 20 + Math.sin(Date.now() / 400) * 3; // Floating hover animation!
+          ctx.beginPath();
+          ctx.moveTo(px + 25, crystalY - 14); // Spire apex
+          ctx.lineTo(px + 35, crystalY);
+          ctx.lineTo(px + 25, crystalY + 12);
+          ctx.lineTo(px + 15, crystalY);
+          ctx.closePath();
+          const crystalGrad = ctx.createLinearGradient(px + 15, crystalY - 14, px + 35, crystalY + 12);
+          crystalGrad.addColorStop(0, '#ffffff');
+          crystalGrad.addColorStop(0.5, '#38bdf8');
+          crystalGrad.addColorStop(1, '#0369a1');
+          ctx.fillStyle = crystalGrad;
+          ctx.shadowColor = '#38bdf8';
+          ctx.shadowBlur = 12;
+          ctx.fill();
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+
+          // Holographic Forcefield Shield Ring
+          ctx.beginPath();
+          ctx.ellipse(px + 25, py + 26, 22, 14, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+          ctx.lineWidth = 1;
+          ctx.setLineDash([3, 3]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.restore();
         } else {
           // Open walkable ground
           ctx.fillStyle = '#0b0f19';
@@ -863,6 +951,46 @@ export class GameEngine {
       }
     }
 
+    // 3.5. Highlight Available Placement Platforms if placing a tower
+    if (this.selectedTowerTypeToPlace) {
+      ctx.save();
+      for (let y = 0; y < GRID_ROWS; y++) {
+        for (let x = 0; x < GRID_COLS; x++) {
+          if (this.grid[y][x] === CellType.TOWER_ZONE) {
+            const hasTower = this.towers.some((t) => t.gridX === x && t.gridY === y);
+            if (!hasTower) {
+              const px = x * CELL_SIZE;
+              const py = y * CELL_SIZE;
+              // Glowing green/cyan placement invitation
+              ctx.fillStyle = 'rgba(16, 185, 129, 0.22)';
+              ctx.fillRect(px + 2, py + 2, CELL_SIZE - 4, CELL_SIZE - 4);
+              ctx.strokeStyle = '#10b981';
+              ctx.lineWidth = 2;
+              ctx.strokeRect(px + 2, py + 2, CELL_SIZE - 4, CELL_SIZE - 4);
+
+              // Plus indicator in center
+              ctx.fillStyle = '#ffffff';
+              ctx.fillRect(px + CELL_SIZE / 2 - 1, py + CELL_SIZE / 2 - 6, 2, 12);
+              ctx.fillRect(px + CELL_SIZE / 2 - 6, py + CELL_SIZE / 2 - 1, 12, 2);
+            }
+          }
+        }
+      }
+
+      // Banner on top of canvas
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+      ctx.fillRect(CANVAS_WIDTH / 2 - 240, 10, 480, 32);
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(CANVAS_WIDTH / 2 - 240, 10, 480, 32);
+
+      ctx.font = 'bold 13px system-ui, sans-serif';
+      ctx.fillStyle = '#38bdf8';
+      ctx.textAlign = 'center';
+      ctx.fillText('DEPLOYMENT MODE: Click any green [+] platform to place tower!', CANVAS_WIDTH / 2, 31);
+      ctx.restore();
+    }
+
     // 4. Tower Placement Preview (under cursor)
     if (this.selectedTowerTypeToPlace && this.hoveredGridNode) {
       const px = this.hoveredGridNode.x * CELL_SIZE;
@@ -894,6 +1022,9 @@ export class GameEngine {
     for (const enemy of this.enemies) {
       enemy.draw(ctx);
     }
+
+    // 5.5. Draw Player-Controlled Hero Soldier
+    this.hero.draw(ctx, this.isHeroSelected);
 
     // 6. Draw Projectiles
     for (const proj of this.projectiles) {

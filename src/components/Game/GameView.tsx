@@ -40,6 +40,8 @@ export const GameView: React.FC<GameViewProps> = ({
 
   // Difficulty selection state before play
   const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>(Difficulty.MEDIUM);
+  const [showTutorial, setShowTutorial] = useState<boolean>(false);
+  const [autoWave, setAutoWave] = useState<boolean>(false);
 
   useEffect(() => {
     const listener = {
@@ -64,6 +66,82 @@ export const GameView: React.FC<GameViewProps> = ({
       engine.removeListener(listener);
     };
   }, [engine]);
+
+  // Auto-Wave Progression
+  useEffect(() => {
+    if (autoWave && gameState === GameState.WAVE_COMPLETE) {
+      const timer = setTimeout(() => {
+        if (engine.state === GameState.WAVE_COMPLETE) {
+          engine.startWave();
+        }
+      }, 1800);
+      return () => clearTimeout(timer);
+    }
+  }, [autoWave, gameState, engine]);
+
+  // Direct Keyboard Hotkeys Listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if user is inside an input/textarea
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+
+      const key = e.key.toLowerCase();
+
+      if (key === 't' || key === '1') {
+        e.preventDefault();
+        handleSelectTowerType(TowerType.BASIC);
+      } else if (key === '2') {
+        e.preventDefault();
+        handleSelectTowerType(TowerType.RAPID);
+      } else if (key === '3') {
+        e.preventDefault();
+        handleSelectTowerType(TowerType.HEAVY);
+      } else if (key === 'h') {
+        e.preventDefault();
+        engine.isHeroSelected = !engine.isHeroSelected;
+        if (engine.isHeroSelected) {
+          engine.selectedTower = null;
+          engine.selectedTowerTypeToPlace = null;
+          setSelectedTowerType(null);
+        }
+        setSelectionTrigger((v) => v + 1);
+      } else if (e.code === 'Space') {
+        e.preventDefault();
+        if (gameState === GameState.PLAYING) {
+          engine.pauseGame();
+        } else if (gameState === GameState.PAUSED) {
+          engine.resumeGame();
+        } else {
+          engine.startWave();
+        }
+        setSelectionTrigger((v) => v + 1);
+      } else if (key === 'u') {
+        e.preventDefault();
+        if (engine.selectedTower) {
+          handleUpgradeSelectedTower();
+        }
+      } else if (key === 's' || key === 'delete' || key === 'backspace') {
+        e.preventDefault();
+        if (engine.selectedTower) {
+          handleSellSelectedTower();
+        }
+      } else if (key === 'a') {
+        e.preventDefault();
+        const next = !engine.showAStarVisuals;
+        engine.showAStarVisuals = next;
+        setShowAStar(next);
+        setSelectionTrigger((v) => v + 1);
+      } else if (key === 'escape') {
+        e.preventDefault();
+        handleDeselectTower();
+        engine.isHeroSelected = false;
+        setSelectionTrigger((v) => v + 1);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [engine, gameState, selectedTowerType]);
 
   const handleStartGame = () => {
     engine.startNewGame(selectedDifficulty);
@@ -264,6 +342,49 @@ export const GameView: React.FC<GameViewProps> = ({
         gameState={gameState}
       />
 
+      {/* Tactical Quick Instruction Banner */}
+      <div className="glass-panel" style={{
+        padding: '12px 20px',
+        marginBottom: 16,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        background: 'rgba(15, 23, 42, 0.85)',
+        border: '1px solid rgba(56, 189, 248, 0.35)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', fontSize: '0.86rem' }}>
+          <span style={{
+            background: 'rgba(56, 189, 248, 0.18)',
+            color: '#38bdf8',
+            padding: '3px 10px',
+            borderRadius: 6,
+            fontWeight: 700,
+            fontSize: '0.76rem',
+            textTransform: 'uppercase',
+          }}>
+            Tactical Steps
+          </span>
+          <span style={{ color: '#f8fafc' }}>
+            <strong>1.</strong> Choose a Turret on the right ➔ <strong>2.</strong> Click any green <strong>[+]</strong> platform on the map ➔ <strong>3.</strong> Click <strong>START NEXT WAVE</strong> to engage enemies!
+          </span>
+        </div>
+
+        <button
+          onClick={() => setShowTutorial(true)}
+          className="btn-secondary"
+          style={{
+            padding: '6px 14px',
+            fontSize: '0.8rem',
+            borderColor: 'rgba(56, 189, 248, 0.5)',
+            color: '#38bdf8',
+          }}
+        >
+          📖 HOW TO PLAY GUIDE
+        </button>
+      </div>
+
       {/* Main Game Stage Layout */}
       <div style={{
         display: 'grid',
@@ -287,6 +408,7 @@ export const GameView: React.FC<GameViewProps> = ({
             gameSpeed={gameSpeed}
             showAStar={showAStar}
             soundEnabled={soundEnabled}
+            autoWave={autoWave}
             onStartWave={() => engine.startWave()}
             onPause={() => engine.pauseGame()}
             onResume={() => engine.resumeGame()}
@@ -304,6 +426,7 @@ export const GameView: React.FC<GameViewProps> = ({
               const active = engine.waveManager ? !soundEnabled : true;
               setSoundEnabled(active);
             }}
+            onToggleAutoWave={() => setAutoWave(!autoWave)}
             onSave={() => engine.saveGame()}
             onLoad={() => {
               const loaded = engine.loadGame();
@@ -374,6 +497,110 @@ export const GameView: React.FC<GameViewProps> = ({
           onPlayAgain={handleStartGame}
           onHome={onNavigateHome}
         />
+      )}
+
+      {/* How To Play Tutorial Modal */}
+      {showTutorial && (
+        <div className="modal-overlay" onClick={() => setShowTutorial(false)}>
+          <div
+            className="glass-panel"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: 680,
+              width: '100%',
+              maxHeight: '90vh',
+              overflowY: 'auto',
+              padding: '32px',
+              position: 'relative',
+              border: '1px solid rgba(56, 189, 248, 0.4)',
+              boxShadow: '0 0 50px rgba(0, 0, 0, 0.8)',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>
+                📖 Commander's Tactical Briefing
+              </h2>
+              <button
+                onClick={() => setShowTutorial(false)}
+                className="btn-secondary"
+                style={{ padding: '6px 12px', fontSize: '0.85rem' }}
+              >
+                ✕ Close
+              </button>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, fontSize: '0.92rem', color: '#cbd5e1', lineHeight: 1.6 }}>
+              <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: '16px', borderRadius: 8 }}>
+                <h3 style={{ color: '#38bdf8', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
+                  1. The Strategic Objective
+                </h3>
+                <p>
+                  Hostile invaders spawn from the <strong>pink Rift Portal</strong> on the left side of the map and march along the path towards your <strong>blue Crystal Headquarters (Base)</strong> on the right. If enemies reach the Base, your Base Integrity decreases. If Base Integrity reaches <strong>0 HP</strong>, the game is over!
+                </p>
+              </div>
+
+              <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: '16px', borderRadius: 8 }}>
+                <h3 style={{ color: '#10b981', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
+                  2. How to Stop the Enemies (Tower Placement)
+                </h3>
+                <p>
+                  Before starting a wave, you must deploy defensive turrets:
+                </p>
+                <ol style={{ paddingLeft: 20, marginTop: 8, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <li>Click on a turret in the <strong>Defensive Arsenal</strong> on the right (e.g. <em>Gatling Sentry</em> for 100 coins).</li>
+                  <li>Notice that all designated defensive platforms on the map light up in <strong>green with [+]</strong> signs.</li>
+                  <li>Click on any highlighted platform (especially near road corners where towers get the most coverage) to build the turret!</li>
+                  <li>Your coins will be deducted, and the turret will activate immediately.</li>
+                </ol>
+              </div>
+
+              <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: '16px', borderRadius: 8 }}>
+                <h3 style={{ color: '#f59e0b', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
+                  3. Launching Waves & Automatic Combat
+                </h3>
+                <p>
+                  Once you have placed 1 or 2 turrets, click the blue <strong>"START NEXT WAVE"</strong> button below the board:
+                </p>
+                <ul style={{ paddingLeft: 20, marginTop: 8, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <li>Your turrets will <strong>automatically detect</strong> approaching enemies in range and fire kinetic bullets, photon lasers, or plasma mortars.</li>
+                  <li>Each defeated enemy awards you <strong>bonus coins</strong> (+20 to +45 coins).</li>
+                  <li>Clearing an entire wave awards a <strong>Wave Completion Dividend</strong>!</li>
+                </ul>
+              </div>
+
+              <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: '16px', borderRadius: 8 }}>
+                <h3 style={{ color: '#c084fc', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
+                  4. Upgrading Turrets & Targeting Priorities
+                </h3>
+                <p>
+                  Click on any turret you have placed on the map to open the <strong>Turret Inspector</strong> on the right:
+                </p>
+                <ul style={{ paddingLeft: 20, marginTop: 8, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <li>Click <strong>UPGRADE</strong> to increase attack power, range, and fire rate (up to Rank 3).</li>
+                  <li>Change <strong>Targeting Priority</strong>: <em>First on Path</em> (default), <em>Closest</em>, <em>Lowest HP</em>, or <em>Strongest</em>.</li>
+                  <li>If needed, click <strong>DECOMMISSION</strong> to sell a turret and recover 70% of your coins.</li>
+                </ul>
+              </div>
+
+              <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: '16px', borderRadius: 8 }}>
+                <h3 style={{ color: '#38bdf8', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
+                  5. A* Heuristic Pathfinding Demonstration
+                </h3>
+                <p>
+                  Enemies do not follow a hardcoded script; they navigate dynamically using the <strong>A* algorithm</strong> ($F = G + H$). Click <strong>"SHOW A* PATH"</strong> below the board anytime to see the explored nodes and optimal route in real time!
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setShowTutorial(false)}
+              className="btn-primary"
+              style={{ width: '100%', marginTop: 20, padding: '12px' }}
+            >
+              GOT IT, LET'S DEFEND!
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

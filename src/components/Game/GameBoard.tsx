@@ -59,7 +59,15 @@ export const GameBoard: React.FC<GameBoardProps> = ({ engine, onSelectTower }) =
     const mouseY = (e.clientY - rect.top) * scaleY;
     const gridPoint = pixelToGrid(mouseX, mouseY);
 
-    // If in placement mode
+    // 1. If hero is selected, left-click sets hero rally point!
+    if (engine.isHeroSelected) {
+      engine.hero.setRallyPoint(mouseX, mouseY);
+      engine.vfx.addHitSparks(mouseX, mouseY, '#38bdf8', 8);
+      onSelectTower();
+      return;
+    }
+
+    // 2. If in tower placement mode
     if (engine.selectedTowerTypeToPlace) {
       const placed = engine.placeTower(gridPoint.x, gridPoint.y, engine.selectedTowerTypeToPlace);
       if (placed) {
@@ -68,27 +76,51 @@ export const GameBoard: React.FC<GameBoardProps> = ({ engine, onSelectTower }) =
       return;
     }
 
-    // Otherwise check if selecting an existing tower
+    // 3. Check if clicking on the Hero Soldier
+    const distToHero = Math.hypot(mouseX - engine.hero.x, mouseY - engine.hero.y);
+    if (distToHero <= 26) {
+      engine.isHeroSelected = !engine.isHeroSelected;
+      engine.selectedTower = null;
+      onSelectTower();
+      return;
+    }
+
+    // 4. Otherwise check if selecting an existing tower
     const clickedTower = engine.towers.find(
       (t) => t.gridX === gridPoint.x && t.gridY === gridPoint.y
     );
 
     if (clickedTower) {
       engine.selectedTower = clickedTower;
+      engine.isHeroSelected = false;
       onSelectTower();
     } else {
       engine.selectedTower = null;
+      engine.isHeroSelected = false;
       onSelectTower();
     }
   };
 
   const handleContextMenu = (e: React.MouseEvent<HTMLCanvasElement>) => {
     e.preventDefault();
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const mouseX = (e.clientX - rect.left) * scaleX;
+    const mouseY = (e.clientY - rect.top) * scaleY;
+
+    // Right-click instantly orders the Hero Soldier to move to that location!
+    engine.hero.setRallyPoint(mouseX, mouseY);
+    engine.vfx.addHitSparks(mouseX, mouseY, '#38bdf8', 10);
+
+    // Also cancel tower placement if active
     if (engine.selectedTowerTypeToPlace) {
       engine.selectedTowerTypeToPlace = null;
-      engine.selectedTower = null;
-      onSelectTower();
     }
+    onSelectTower();
   };
 
   return (
