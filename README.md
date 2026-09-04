@@ -78,21 +78,28 @@ The fundamental research and curriculum focus of this project is exploring **Obj
 ## 4. System Architecture
 
 ```
-                            TOWER DEFENCE SYSTEM
-                                     │
-      ┌──────────────────────────────┼──────────────────────────────┐
-      │                              │                              │
-     GUI                         GAME LOGIC                     AI SYSTEM
-      │                              │                              │
-  Java Swing                    OOP Modules                  A* Pathfinding
- (Desktop App)                  ───────────                 (Manhattan Heuristic)
-      │                     ┌────────┼────────┐                     │
-  React Canvas              │        │        │               Enemy Navigation
-  (Web Demo)              Towers  Enemies   Waves             Dynamic Recalculation
-      │                     │        │        │
-  User Input              Combat   Health  Progression
-  (Mouse/Click)             │        │
-                            └────────┴─── Economy / Coins
+PLAYER INPUT
+     ↓
+GAME INITIALIZATION
+     ↓
+GAME CONTROL SYSTEM
+     ↓
+ ┌───────────────────────────────────────┐
+ │                                       │
+ ↓                                       ↓
+ENEMY & WAVE MANAGEMENT          TOWER MANAGEMENT
+ │                                       │
+ ↓                                       ↓
+A* PATHFINDING                    TOWER PLACEMENT
+ │                                       │
+ ↓                                       ↓
+ENEMY MOVEMENT                    COMBAT SYSTEM
+ │                                       │
+ └───────────────→ GAME STATE ←──────────┘
+                        ↓
+              RESOURCE & UPGRADE SYSTEM
+                        ↓
+                 VISUAL GAME OUTPUT
 ```
 
 ### Module Cross-Platform Mapping

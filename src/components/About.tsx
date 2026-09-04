@@ -240,6 +240,76 @@ export const About: React.FC = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Core Java & OOP Paradigms (STEP 7) */}
+        <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid var(--border-subtle)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+            <Cpu size={20} color="#38bdf8" />
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc', margin: 0 }}>
+              Java & Object-Oriented Programming (OOP) Core Pillars
+            </h3>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 14,
+          }}>
+            <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
+              <div style={{ color: '#38bdf8', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+                Java & Java Swing GUI
+              </div>
+              <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
+                Desktop GUI built with <code style={{ color: '#cbd5e1' }}>JFrame</code>, <code style={{ color: '#cbd5e1' }}>JPanel</code>, and custom <code style={{ color: '#cbd5e1' }}>paintComponent(Graphics2D)</code> rendering loop.
+              </div>
+            </div>
+
+            <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
+              <div style={{ color: '#10b981', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+                Classes & Objects
+              </div>
+              <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
+                Modular domain entities (<code style={{ color: '#cbd5e1' }}>Tower</code>, <code style={{ color: '#cbd5e1' }}>Enemy</code>, <code style={{ color: '#cbd5e1' }}>Projectile</code>, <code style={{ color: '#cbd5e1' }}>Economy</code>, <code style={{ color: '#cbd5e1' }}>AStarNode</code>) instantiated dynamically.
+              </div>
+            </div>
+
+            <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
+              <div style={{ color: '#a855f7', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+                Encapsulation
+              </div>
+              <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
+                Internal health and currency state fields remain private, exposed solely via validated methods (<code style={{ color: '#cbd5e1' }}>takeDamage()</code>, <code style={{ color: '#cbd5e1' }}>spend()</code>).
+              </div>
+            </div>
+
+            <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
+              <div style={{ color: '#f59e0b', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+                Inheritance & Polymorphism
+              </div>
+              <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
+                Shared entity hierarchy with polymorphic targeting policies (<code style={{ color: '#cbd5e1' }}>TargetingMode</code>) and distinct subclass combat behaviors.
+              </div>
+            </div>
+
+            <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
+              <div style={{ color: '#f43f5e', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+                Event Handling & Controls
+              </div>
+              <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
+                Interactive listener architecture (<code style={{ color: '#cbd5e1' }}>KeyListener</code>, <code style={{ color: '#cbd5e1' }}>MouseListener</code>) processing keyboard hotkeys and grid clicks.
+              </div>
+            </div>
+
+            <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
+              <div style={{ color: '#06b6d4', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+                A* Pathfinding Algorithm
+              </div>
+              <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
+                Heuristic graph search algorithm ($F = G + H$) with priority queue evaluation for real-time obstacle-aware enemy navigation.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -260,8 +260,8 @@ export const GameView: React.FC<GameViewProps> = ({
                     gap: 4,
                   }}>
                     <div>Initial Balance: <strong style={{ color: '#facc15' }}>{diff.startingCoins} Coins</strong></div>
-                    <div>Hostile Vitality: <strong>{diff.enemyHealthMultiplier * 100}%</strong></div>
-                    <div>March Velocity: <strong>{diff.enemySpeedMultiplier * 100}%</strong></div>
+                    <div>Hostile Vitality: <strong>{Math.round(diff.enemyHealthMultiplier * 100)}%</strong></div>
+                    <div>March Velocity: <strong>{Math.round(diff.enemySpeedMultiplier * 100)}%</strong></div>
                   </div>
                 </div>
               );
