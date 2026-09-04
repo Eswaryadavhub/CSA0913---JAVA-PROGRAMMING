@@ -32,7 +32,7 @@ export const Architecture: React.FC = () => {
         'Game initialization & reset routines',
         'Difficulty and game setup parameters',
       ],
-      icon: <Monitor size={22} color="#38bdf8" />,
+      icon: <Monitor size={22} color="#10b981" />,
     },
     {
       name: '2. Enemy & Wave Management',
@@ -60,7 +60,7 @@ export const Architecture: React.FC = () => {
         'Obstacle-aware movement and real-time rerouting',
         'Dynamic heuristic cost evaluation',
       ],
-      icon: <Compass size={22} color="#a855f7" />,
+      icon: <Compass size={22} color="#34d399" />,
     },
     {
       name: '4. Tower Placement & Combat',
@@ -89,7 +89,7 @@ export const Architecture: React.FC = () => {
         'Tier-based tower upgrades (Rank 1 to Rank 3)',
         'Damage, range and attack speed improvements',
       ],
-      icon: <Coins size={22} color="#facc15" />,
+      icon: <Coins size={22} color="#fbbf24" />,
     },
     {
       name: '6. Game State Management',
@@ -117,7 +117,7 @@ export const Architecture: React.FC = () => {
         'Tower attacks, tracer lines, and particle bursts',
         'Real-time resource, wave, and health HUD display',
       ],
-      icon: <Eye size={22} color="#06b6d4" />,
+      icon: <Eye size={22} color="#10b981" />,
     },
   ];
 
@@ -176,8 +176,8 @@ export const Architecture: React.FC = () => {
           }}>
             {/* 1. PLAYER INPUT */}
             <div style={{
-              background: 'linear-gradient(135deg, rgba(2, 132, 199, 0.25), rgba(56, 189, 248, 0.15))',
-              border: '1px solid rgba(56, 189, 248, 0.4)',
+              background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.25), rgba(16, 185, 129, 0.15))',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
               borderRadius: 10,
               padding: '12px 28px',
               color: '#f8fafc',
@@ -187,13 +187,13 @@ export const Architecture: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               gap: 10,
-              boxShadow: '0 4px 16px rgba(56, 189, 248, 0.1)',
+              boxShadow: '0 4px 16px rgba(16, 185, 129, 0.15)',
             }}>
-              <User size={18} color="#38bdf8" />
+              <User size={18} color="#34d399" />
               <span>PLAYER INPUT</span>
             </div>
 
-            <ArrowDown size={20} color="#38bdf8" />
+            <ArrowDown size={20} color="#34d399" />
 
             {/* 2. GAME INITIALIZATION */}
             <div style={{
@@ -209,16 +209,16 @@ export const Architecture: React.FC = () => {
               alignItems: 'center',
               gap: 10,
             }}>
-              <Gamepad2 size={18} color="#a855f7" />
+              <Gamepad2 size={18} color="#f59e0b" />
               <span>GAME INITIALIZATION</span>
             </div>
 
-            <ArrowDown size={20} color="#a855f7" />
+            <ArrowDown size={20} color="#f59e0b" />
 
             {/* 3. GAME CONTROL SYSTEM */}
             <div style={{
               background: 'rgba(30, 41, 59, 0.95)',
-              border: '1px solid rgba(168, 85, 247, 0.4)',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
               borderRadius: 10,
               padding: '12px 32px',
               color: '#ffffff',
@@ -228,13 +228,13 @@ export const Architecture: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               gap: 10,
-              boxShadow: '0 4px 16px rgba(168, 85, 247, 0.15)',
+              boxShadow: '0 4px 16px rgba(16, 185, 129, 0.15)',
             }}>
-              <Cpu size={18} color="#c084fc" />
+              <Cpu size={18} color="#34d399" />
               <span>GAME CONTROL SYSTEM</span>
             </div>
 
-            <ArrowDown size={20} color="#c084fc" />
+            <ArrowDown size={20} color="#34d399" />
 
             {/* Parallel Split Container */}
             <div style={{
@@ -276,8 +276,8 @@ export const Architecture: React.FC = () => {
                 }}>
                   <div style={{
                     width: '100%',
-                    background: 'rgba(244, 63, 94, 0.12)',
-                    border: '1px solid rgba(244, 63, 94, 0.35)',
+                    background: 'rgba(239, 68, 68, 0.12)',
+                    border: '1px solid rgba(239, 68, 68, 0.35)',
                     borderRadius: 8,
                     padding: '11px 16px',
                     color: '#f8fafc',
@@ -288,16 +288,16 @@ export const Architecture: React.FC = () => {
                     justifyContent: 'center',
                     gap: 8,
                   }}>
-                    <Layers size={16} color="#f43f5e" />
+                    <Layers size={16} color="#ef4444" />
                     <span>ENEMY & WAVE MANAGEMENT</span>
                   </div>
 
-                  <ArrowDown size={18} color="#f43f5e" />
+                  <ArrowDown size={18} color="#ef4444" />
 
                   <div style={{
                     width: '100%',
-                    background: 'rgba(168, 85, 247, 0.12)',
-                    border: '1px solid rgba(168, 85, 247, 0.35)',
+                    background: 'rgba(16, 185, 129, 0.12)',
+                    border: '1px solid rgba(16, 185, 129, 0.35)',
                     borderRadius: 8,
                     padding: '11px 16px',
                     color: '#f8fafc',
@@ -308,16 +308,16 @@ export const Architecture: React.FC = () => {
                     justifyContent: 'center',
                     gap: 8,
                   }}>
-                    <Compass size={16} color="#c084fc" />
+                    <Compass size={16} color="#34d399" />
                     <span>A* PATHFINDING</span>
                   </div>
 
-                  <ArrowDown size={18} color="#c084fc" />
+                  <ArrowDown size={18} color="#34d399" />
 
                   <div style={{
                     width: '100%',
-                    background: 'rgba(244, 63, 94, 0.15)',
-                    border: '1px solid rgba(244, 63, 94, 0.4)',
+                    background: 'rgba(239, 68, 68, 0.15)',
+                    border: '1px solid rgba(239, 68, 68, 0.4)',
                     borderRadius: 8,
                     padding: '11px 16px',
                     color: '#f8fafc',
@@ -328,7 +328,7 @@ export const Architecture: React.FC = () => {
                     justifyContent: 'center',
                     gap: 8,
                   }}>
-                    <Shield size={16} color="#f43f5e" />
+                    <Shield size={16} color="#ef4444" />
                     <span>ENEMY MOVEMENT</span>
                   </div>
                 </div>
@@ -342,8 +342,8 @@ export const Architecture: React.FC = () => {
                 }}>
                   <div style={{
                     width: '100%',
-                    background: 'rgba(56, 189, 248, 0.12)',
-                    border: '1px solid rgba(56, 189, 248, 0.35)',
+                    background: 'rgba(16, 185, 129, 0.12)',
+                    border: '1px solid rgba(16, 185, 129, 0.35)',
                     borderRadius: 8,
                     padding: '11px 16px',
                     color: '#f8fafc',
@@ -354,16 +354,16 @@ export const Architecture: React.FC = () => {
                     justifyContent: 'center',
                     gap: 8,
                   }}>
-                    <Monitor size={16} color="#38bdf8" />
+                    <Monitor size={16} color="#34d399" />
                     <span>TOWER MANAGEMENT</span>
                   </div>
 
-                  <ArrowDown size={18} color="#38bdf8" />
+                  <ArrowDown size={18} color="#34d399" />
 
                   <div style={{
                     width: '100%',
-                    background: 'rgba(16, 185, 129, 0.12)',
-                    border: '1px solid rgba(16, 185, 129, 0.35)',
+                    background: 'rgba(16, 185, 129, 0.15)',
+                    border: '1px solid rgba(16, 185, 129, 0.4)',
                     borderRadius: 8,
                     padding: '11px 16px',
                     color: '#f8fafc',
@@ -405,7 +405,7 @@ export const Architecture: React.FC = () => {
 
             {/* 4. GAME STATE */}
             <div style={{
-              background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(244, 63, 94, 0.15))',
+              background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(220, 38, 38, 0.15))',
               border: '1px solid rgba(239, 68, 68, 0.45)',
               borderRadius: 10,
               padding: '12px 36px',
@@ -422,7 +422,7 @@ export const Architecture: React.FC = () => {
               <span>GAME STATE</span>
             </div>
 
-            <ArrowDown size={20} color="#facc15" />
+            <ArrowDown size={20} color="#f59e0b" />
 
             {/* 5. RESOURCE & UPGRADE SYSTEM */}
             <div style={{
@@ -438,16 +438,16 @@ export const Architecture: React.FC = () => {
               alignItems: 'center',
               gap: 10,
             }}>
-              <Coins size={18} color="#facc15" />
+              <Coins size={18} color="#fbbf24" />
               <span>RESOURCE & UPGRADE SYSTEM</span>
             </div>
 
-            <ArrowDown size={20} color="#06b6d4" />
+            <ArrowDown size={20} color="#10b981" />
 
             {/* 6. VISUAL GAME OUTPUT */}
             <div style={{
-              background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(56, 189, 248, 0.2))',
-              border: '1px solid rgba(6, 182, 212, 0.45)',
+              background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.25), rgba(16, 185, 129, 0.2))',
+              border: '1px solid rgba(16, 185, 129, 0.45)',
               borderRadius: 10,
               padding: '12px 36px',
               color: '#ffffff',
@@ -457,9 +457,9 @@ export const Architecture: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               gap: 10,
-              boxShadow: '0 4px 18px rgba(6, 182, 212, 0.2)',
+              boxShadow: '0 4px 18px rgba(16, 185, 129, 0.2)',
             }}>
-              <Eye size={18} color="#06b6d4" />
+              <Eye size={18} color="#34d399" />
               <span>VISUAL GAME OUTPUT</span>
             </div>
           </div>
@@ -544,7 +544,7 @@ ENEMY MOVEMENT                    COMBAT SYSTEM
 
               {/* Specific features from block diagram */}
               <div style={{ marginBottom: 16 }}>
-                <div style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#38bdf8', fontWeight: 700, marginBottom: 6 }}>
+                <div style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#34d399', fontWeight: 700, marginBottom: 6 }}>
                   Architectural Capabilities:
                 </div>
                 <ul style={{ margin: 0, paddingLeft: 18, color: '#cbd5e1', fontSize: '0.82rem', lineHeight: 1.5 }}>

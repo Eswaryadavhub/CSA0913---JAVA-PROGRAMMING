@@ -142,7 +142,7 @@ export const AStarVisualizer: React.FC = () => {
           gap: 20,
         }}>
           <div>
-            <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#38bdf8', fontWeight: 700 }}>
+            <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#34d399', fontWeight: 700 }}>
               Primary Evaluation Function
             </div>
             <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#ffffff', fontFamily: 'monospace' }}>
@@ -162,7 +162,7 @@ export const AStarVisualizer: React.FC = () => {
             </div>
 
             <div style={{ background: 'rgba(15, 23, 42, 0.7)', padding: '10px 14px', borderRadius: 8 }}>
-              <div style={{ color: '#38bdf8', fontWeight: 700, fontSize: '0.9rem' }}>H(n) : Heuristic Estimate</div>
+              <div style={{ color: '#34d399', fontWeight: 700, fontSize: '0.9rem' }}>H(n) : Heuristic Estimate</div>
               <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Manhattan distance: |x - x_target| + |y - y_target|</div>
             </div>
 
@@ -230,7 +230,7 @@ export const AStarVisualizer: React.FC = () => {
                   setIsPlaying(false);
                   setCurrentStepIndex(Number(e.target.value));
                 }}
-                style={{ flex: 1, accentColor: '#38bdf8' }}
+                style={{ flex: 1, accentColor: '#10b981' }}
               />
             </div>
           </div>
@@ -268,21 +268,21 @@ export const AStarVisualizer: React.FC = () => {
                   cellBorder = '2px solid #f43f5e';
                   textColor = '#ffffff';
                 } else if (isTarget) {
-                  cellBg = '#1e3a8a';
-                  cellBorder = '2px solid #38bdf8';
+                  cellBg = '#064e3b';
+                  cellBorder = '2px solid #10b981';
                   textColor = '#ffffff';
                 } else if (isCurrent) {
                   cellBg = 'rgba(245, 158, 11, 0.45)';
                   cellBorder = '2px solid #f59e0b';
                 } else if (isPath && currentStepIndex >= astarResult.steps.length - 1) {
-                  cellBg = 'rgba(56, 189, 248, 0.35)';
-                  cellBorder = '1px solid #38bdf8';
+                  cellBg = 'rgba(16, 185, 129, 0.35)';
+                  cellBorder = '1px solid #10b981';
                 } else if (inOpen) {
                   cellBg = 'rgba(34, 197, 94, 0.2)';
                   cellBorder = '1px solid #22c55e';
                 } else if (inClosed) {
-                  cellBg = 'rgba(59, 130, 246, 0.15)';
-                  cellBorder = '1px solid #3b82f6';
+                  cellBg = 'rgba(71, 85, 105, 0.25)';
+                  cellBorder = '1px solid #64748b';
                 }
 
                 if (isSelected) {
@@ -362,7 +362,7 @@ export const AStarVisualizer: React.FC = () => {
               <span>Spawn (Start)</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <div style={{ width: 12, height: 12, background: '#1e3a8a', border: '1px solid #38bdf8', borderRadius: 2 }} />
+              <div style={{ width: 12, height: 12, background: '#064e3b', border: '1px solid #10b981', borderRadius: 2 }} />
               <span>Base (Target)</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -374,11 +374,11 @@ export const AStarVisualizer: React.FC = () => {
               <span>Open Set</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <div style={{ width: 12, height: 12, background: 'rgba(59, 130, 246, 0.2)', border: '1px solid #3b82f6', borderRadius: 2 }} />
+              <div style={{ width: 12, height: 12, background: 'rgba(71, 85, 105, 0.3)', border: '1px solid #64748b', borderRadius: 2 }} />
               <span>Closed Set</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <div style={{ width: 12, height: 12, background: 'rgba(56, 189, 248, 0.4)', border: '1px solid #38bdf8', borderRadius: 2 }} />
+              <div style={{ width: 12, height: 12, background: 'rgba(16, 185, 129, 0.4)', border: '1px solid #10b981', borderRadius: 2 }} />
               <span>Final Optimal Path</span>
             </div>
           </div>
@@ -400,7 +400,7 @@ export const AStarVisualizer: React.FC = () => {
                   marginBottom: 16,
                 }}>
                   <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Inspected Coordinate</div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#38bdf8', fontFamily: 'monospace' }}>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#34d399', fontFamily: 'monospace' }}>
                     ({selectedNode.x}, {selectedNode.y})
                   </div>
                 </div>
@@ -414,9 +414,9 @@ export const AStarVisualizer: React.FC = () => {
                       </div>
                     </div>
 
-                    <div style={{ background: 'rgba(56, 189, 248, 0.1)', border: '1px solid rgba(56, 189, 248, 0.3)', padding: '10px 14px', borderRadius: 6 }}>
-                      <div style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 600 }}>H-Cost (Manhattan → Goal)</div>
-                      <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#38bdf8' }}>
+                    <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '10px 14px', borderRadius: 6 }}>
+                      <div style={{ fontSize: '0.75rem', color: '#34d399', fontWeight: 600 }}>H-Cost (Manhattan → Goal)</div>
+                      <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#34d399' }}>
                         {selectedNodeDetails.h}
                       </div>
                     </div>

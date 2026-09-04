@@ -110,10 +110,10 @@ export class HeroSoldier {
     ctx.fillStyle = '#1e293b';
     ctx.fillRect(this.x - 7, this.y + 2, 14, 8);
 
-    // 2. Armored 3D Torso (Cyber Blue gradient with lighting)
+    // 2. Armored 3D Torso (Emerald Tactical gradient with lighting)
     const torsoGrad = ctx.createLinearGradient(this.x - 8, this.y - 12, this.x + 8, this.y + 2);
-    torsoGrad.addColorStop(0, '#38bdf8');
-    torsoGrad.addColorStop(1, '#0284c7');
+    torsoGrad.addColorStop(0, '#34d399');
+    torsoGrad.addColorStop(1, '#059669');
     ctx.fillStyle = torsoGrad;
     ctx.beginPath();
     ctx.roundRect(this.x - 9, this.y - 12, 18, 14, 3);
@@ -127,12 +127,12 @@ export class HeroSoldier {
     ctx.arc(this.x, this.y - 16, 7, 0, Math.PI * 2);
     ctx.fillStyle = '#0f172a';
     ctx.fill();
-    ctx.strokeStyle = '#38bdf8';
+    ctx.strokeStyle = '#10b981';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Glowing Cyan Visor Line
-    ctx.fillStyle = '#38bdf8';
+    // Glowing Emerald Visor Line
+    ctx.fillStyle = '#34d399';
     ctx.fillRect(this.x - 4, this.y - 18, 8, 3);
 
     // 4. Plasma Sword / Blaster arm
@@ -153,7 +153,7 @@ export class HeroSoldier {
       ctx.fill();
     } else {
       // Idle sword raised
-      ctx.fillStyle = '#38bdf8';
+      ctx.fillStyle = '#34d399';
       ctx.fillRect(this.x + 8, this.y - 16, 3, 14);
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(this.x + 8, this.y - 18, 3, 4);
@@ -170,7 +170,7 @@ export class HeroSoldier {
 
     // Level Badge
     ctx.font = 'bold 9px system-ui, sans-serif';
-    ctx.fillStyle = '#38bdf8';
+    ctx.fillStyle = '#34d399';
     ctx.textAlign = 'center';
     ctx.fillText(`HERO LV.${this.level}`, this.x, this.y - 32);
 
@@ -178,7 +178,7 @@ export class HeroSoldier {
     if (isSelected) {
       ctx.beginPath();
       ctx.arc(this.x, this.y, 22, 0, Math.PI * 2);
-      ctx.strokeStyle = '#38bdf8';
+      ctx.strokeStyle = '#10b981';
       ctx.lineWidth = 2;
       ctx.setLineDash([4, 4]);
       ctx.stroke();
@@ -188,7 +188,7 @@ export class HeroSoldier {
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
       ctx.lineTo(this.targetX, this.targetY);
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.5)';
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.5)';
       ctx.lineWidth = 1.5;
       ctx.setLineDash([6, 4]);
       ctx.stroke();
@@ -197,10 +197,10 @@ export class HeroSoldier {
       // Rally target icon
       ctx.beginPath();
       ctx.arc(this.targetX, this.targetY, 8, 0, Math.PI * 2);
-      ctx.strokeStyle = '#38bdf8';
+      ctx.strokeStyle = '#10b981';
       ctx.lineWidth = 2;
       ctx.stroke();
-      ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.3)';
       ctx.fill();
     }
 

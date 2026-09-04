@@ -61,17 +61,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             width: 38,
             height: 38,
             borderRadius: 8,
-            background: 'linear-gradient(135deg, #0284c7, #38bdf8)',
+            background: 'linear-gradient(135deg, #059669, #10b981)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 0 15px rgba(56, 189, 248, 0.4)',
+            boxShadow: '0 0 15px rgba(16, 185, 129, 0.4)',
           }}>
             <Shield size={22} color="#ffffff" />
           </div>
           <div>
             <div style={{ fontWeight: 800, fontSize: '1.05rem', letterSpacing: '0.5px', color: '#ffffff' }}>
-              DEFENCE <span style={{ color: '#38bdf8' }}>A*</span>
+              DEFENCE <span style={{ color: '#34d399' }}>A*</span>
             </div>
             <div style={{ fontSize: '0.7rem', color: '#94a3b8', letterSpacing: '0.3px' }}>
               Java Swing Capstone Demonstration
@@ -99,13 +99,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   padding: '8px 14px',
                   borderRadius: 6,
                   border: 'none',
-                  background: isActive ? 'rgba(56, 189, 248, 0.15)' : 'transparent',
-                  color: isActive ? '#38bdf8' : '#94a3b8',
+                  background: isActive ? 'rgba(16, 185, 129, 0.15)' : 'transparent',
+                  color: isActive ? '#34d399' : '#94a3b8',
                   fontWeight: isActive ? 600 : 500,
                   fontSize: '0.88rem',
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
-                  boxShadow: isActive ? 'inset 0 0 0 1px rgba(56, 189, 248, 0.35)' : 'none',
+                  boxShadow: isActive ? 'inset 0 0 0 1px rgba(16, 185, 129, 0.35)' : 'none',
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive) e.currentTarget.style.color = '#f1f5f9';
@@ -136,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               borderRadius: 8,
               background: 'rgba(30, 41, 59, 0.7)',
               border: '1px solid var(--border-subtle)',
-              color: soundEnabled ? '#38bdf8' : '#64748b',
+              color: soundEnabled ? '#34d399' : '#64748b',
               cursor: 'pointer',
               transition: 'all 0.15s ease',
             }}

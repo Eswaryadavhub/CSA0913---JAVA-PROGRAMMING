@@ -241,7 +241,7 @@ export class Tower {
 
     // Tower Level Insignia Rings on pillar
     for (let i = 0; i < this.level; i++) {
-      ctx.fillStyle = '#38bdf8';
+      ctx.fillStyle = '#10b981';
       ctx.fillRect(this.x - pillarRadius + 2, this.y - 4 - i * 5, pillarRadius * 2 - 4, 2);
     }
 
@@ -322,7 +322,7 @@ export class Tower {
     if (isSelected) {
       ctx.beginPath();
       ctx.ellipse(this.x, this.y, baseRadius + 4, (baseRadius + 4) * 0.65, 0, 0, Math.PI * 2);
-      ctx.strokeStyle = '#38bdf8';
+      ctx.strokeStyle = '#10b981';
       ctx.lineWidth = 2.5;
       ctx.stroke();
     }
@@ -337,9 +337,9 @@ export class Tower {
     ctx.save();
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.range, 0, Math.PI * 2);
-    ctx.fillStyle = isValid ? 'rgba(56, 189, 248, 0.12)' : 'rgba(239, 68, 68, 0.15)';
+    ctx.fillStyle = isValid ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.15)';
     ctx.fill();
-    ctx.strokeStyle = isValid ? 'rgba(56, 189, 248, 0.6)' : 'rgba(239, 68, 68, 0.8)';
+    ctx.strokeStyle = isValid ? 'rgba(16, 185, 129, 0.6)' : 'rgba(239, 68, 68, 0.8)';
     ctx.lineWidth = 1.5;
     ctx.setLineDash([6, 4]);
     ctx.stroke();

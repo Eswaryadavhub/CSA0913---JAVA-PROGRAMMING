@@ -65,7 +65,7 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
         }}>
           <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '12px 16px', borderRadius: 8 }}>
             <div style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Award size={14} color="#c084fc" /> Final Score
+              <Award size={14} color="#fbbf24" /> Final Score
             </div>
             <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#f8fafc' }}>
               {stats.score}
@@ -74,7 +74,7 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
 
           <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '12px 16px', borderRadius: 8 }}>
             <div style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Shield size={14} color="#38bdf8" /> Waves Cleared
+              <Shield size={14} color="#10b981" /> Waves Cleared
             </div>
             <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#10b981' }}>
               10 / 10

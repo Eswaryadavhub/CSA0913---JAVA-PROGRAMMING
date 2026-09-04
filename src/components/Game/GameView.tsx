@@ -190,12 +190,12 @@ export const GameView: React.FC<GameViewProps> = ({
             width: 56,
             height: 56,
             borderRadius: 14,
-            background: 'rgba(56, 189, 248, 0.15)',
+            background: 'rgba(16, 185, 129, 0.15)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             margin: '0 auto 16px',
-            color: '#38bdf8',
+            color: '#34d399',
           }}>
             <Shield size={32} />
           </div>
@@ -226,16 +226,16 @@ export const GameView: React.FC<GameViewProps> = ({
                   onClick={() => setSelectedDifficulty(diffKey)}
                   style={{
                     background: isSelected
-                      ? 'rgba(56, 189, 248, 0.12)'
+                      ? 'rgba(16, 185, 129, 0.12)'
                       : 'rgba(30, 41, 59, 0.5)',
                     border: isSelected
-                      ? '2px solid #38bdf8'
+                      ? '2px solid #10b981'
                       : '1px solid var(--border-subtle)',
                     borderRadius: 10,
                     padding: '24px 20px',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
-                    boxShadow: isSelected ? '0 0 20px rgba(56, 189, 248, 0.25)' : 'none',
+                    boxShadow: isSelected ? '0 0 20px rgba(16, 185, 129, 0.25)' : 'none',
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
@@ -352,12 +352,12 @@ export const GameView: React.FC<GameViewProps> = ({
         flexWrap: 'wrap',
         gap: 12,
         background: 'rgba(15, 23, 42, 0.85)',
-        border: '1px solid rgba(56, 189, 248, 0.35)',
+        border: '1px solid rgba(16, 185, 129, 0.35)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', fontSize: '0.86rem' }}>
           <span style={{
-            background: 'rgba(56, 189, 248, 0.18)',
-            color: '#38bdf8',
+            background: 'rgba(16, 185, 129, 0.18)',
+            color: '#34d399',
             padding: '3px 10px',
             borderRadius: 6,
             fontWeight: 700,
@@ -377,8 +377,8 @@ export const GameView: React.FC<GameViewProps> = ({
           style={{
             padding: '6px 14px',
             fontSize: '0.8rem',
-            borderColor: 'rgba(56, 189, 248, 0.5)',
-            color: '#38bdf8',
+            borderColor: 'rgba(16, 185, 129, 0.5)',
+            color: '#34d399',
           }}
         >
           📖 HOW TO PLAY GUIDE
@@ -461,7 +461,7 @@ export const GameView: React.FC<GameViewProps> = ({
 
           {/* Educational Quick Card for Viva Presentation */}
           <div className="glass-panel" style={{ padding: '16px 20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, color: '#38bdf8' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, color: '#34d399' }}>
               <Compass size={18} />
               <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>A* Heuristic Inspector</div>
             </div>
@@ -531,11 +531,11 @@ export const GameView: React.FC<GameViewProps> = ({
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, fontSize: '0.92rem', color: '#cbd5e1', lineHeight: 1.6 }}>
               <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: '16px', borderRadius: 8 }}>
-                <h3 style={{ color: '#38bdf8', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
+                <h3 style={{ color: '#34d399', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
                   1. The Strategic Objective
                 </h3>
                 <p>
-                  Hostile invaders spawn from the <strong>pink Rift Portal</strong> on the left side of the map and march along the path towards your <strong>blue Crystal Headquarters (Base)</strong> on the right. If enemies reach the Base, your Base Integrity decreases. If Base Integrity reaches <strong>0 HP</strong>, the game is over!
+                  Hostile invaders spawn from the <strong>pink Rift Portal</strong> on the left side of the map and march along the path towards your <strong>emerald Crystal Headquarters (Base)</strong> on the right. If enemies reach the Base, your Base Integrity decreases. If Base Integrity reaches <strong>0 HP</strong>, the game is over!
                 </p>
               </div>
 
@@ -569,7 +569,7 @@ export const GameView: React.FC<GameViewProps> = ({
               </div>
 
               <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: '16px', borderRadius: 8 }}>
-                <h3 style={{ color: '#c084fc', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
+                <h3 style={{ color: '#fbbf24', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
                   4. Upgrading Turrets & Targeting Priorities
                 </h3>
                 <p>
@@ -583,7 +583,7 @@ export const GameView: React.FC<GameViewProps> = ({
               </div>
 
               <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: '16px', borderRadius: 8 }}>
-                <h3 style={{ color: '#38bdf8', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
+                <h3 style={{ color: '#34d399', fontWeight: 700, fontSize: '1.05rem', marginBottom: 6 }}>
                   5. A* Heuristic Pathfinding Demonstration
                 </h3>
                 <p>

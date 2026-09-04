@@ -69,16 +69,16 @@ export const TowerShop: React.FC<TowerShopProps> = ({
               }}
               style={{
                 background: isSelected
-                  ? 'rgba(56, 189, 248, 0.15)'
+                  ? 'rgba(16, 185, 129, 0.15)'
                   : 'rgba(30, 41, 59, 0.6)',
                 border: isSelected
-                  ? '1px solid #38bdf8'
+                  ? '1px solid #10b981'
                   : '1px solid var(--border-subtle)',
                 borderRadius: 8,
                 padding: '14px',
                 cursor: 'pointer',
                 transition: 'all 0.15s ease',
-                boxShadow: isSelected ? '0 0 15px rgba(56, 189, 248, 0.25)' : 'none',
+                boxShadow: isSelected ? '0 0 15px rgba(16, 185, 129, 0.25)' : 'none',
               }}
             >
               {/* Header */}
@@ -99,8 +99,8 @@ export const TowerShop: React.FC<TowerShopProps> = ({
                     <div style={{ fontWeight: 700, fontSize: '0.92rem', color: '#ffffff', display: 'flex', alignItems: 'center', gap: 6 }}>
                       <span>{config.name}</span>
                       <span style={{
-                        background: 'rgba(56, 189, 248, 0.2)',
-                        color: '#38bdf8',
+                        background: 'rgba(16, 185, 129, 0.2)',
+                        color: '#34d399',
                         padding: '1px 6px',
                         borderRadius: 4,
                         fontSize: '0.72rem',
@@ -163,9 +163,9 @@ export const TowerShop: React.FC<TowerShopProps> = ({
                   marginTop: 10,
                   fontSize: '0.72rem',
                   fontWeight: 700,
-                  color: '#38bdf8',
+                  color: '#34d399',
                   textAlign: 'center',
-                  background: 'rgba(56, 189, 248, 0.1)',
+                  background: 'rgba(16, 185, 129, 0.1)',
                   padding: '4px',
                   borderRadius: 4,
                 }}>
@@ -179,17 +179,17 @@ export const TowerShop: React.FC<TowerShopProps> = ({
         {/* Mobile Hero Soldier Squad Controller */}
         <div style={{
           background: 'rgba(15, 23, 42, 0.8)',
-          border: '1px solid rgba(56, 189, 248, 0.4)',
+          border: '1px solid rgba(16, 185, 129, 0.4)',
           borderRadius: 8,
           padding: '14px',
           marginTop: 6,
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontWeight: 700, color: '#38bdf8', fontSize: '0.9rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontWeight: 700, color: '#34d399', fontSize: '0.9rem' }}>
               <span>🛡️ Mobile Hero Soldier</span>
               <span style={{
-                background: 'rgba(56, 189, 248, 0.2)',
-                color: '#38bdf8',
+                background: 'rgba(16, 185, 129, 0.2)',
+                color: '#34d399',
                 padding: '1px 6px',
                 borderRadius: 4,
                 fontSize: '0.72rem',

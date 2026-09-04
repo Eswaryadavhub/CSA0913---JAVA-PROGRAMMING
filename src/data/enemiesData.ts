@@ -21,8 +21,8 @@ export const ENEMIES_CONFIG: Record<EnemyType, EnemyStats> = {
     reward: 25,
     damageToBase: 8,
     size: 11,
-    color: '#06b6d4', // Cyan
-    glowColor: '#22d3ee',
+    color: '#d97706', // Tactical Amber
+    glowColor: '#f59e0b',
     description: 'Lightweight reconnaissance drone capable of dashing past slow defenses.',
   },
   [EnemyType.STRONG]: {
@@ -33,8 +33,8 @@ export const ENEMIES_CONFIG: Record<EnemyType, EnemyStats> = {
     reward: 45,
     damageToBase: 20,
     size: 18,
-    color: '#8b5cf6', // Deep purple
-    glowColor: '#a855f7',
+    color: '#991b1b', // Heavy Crimson
+    glowColor: '#dc2626',
     description: 'Heavily armored siege titan with tremendous durability and high base threat.',
   },
 };

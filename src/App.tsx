@@ -57,7 +57,7 @@ export const App: React.FC = () => {
 
       {/* Academic Capstone Footer */}
       <footer style={{
-        background: 'rgba(9, 13, 22, 0.95)',
+        background: 'rgba(11, 14, 20, 0.96)',
         borderTop: '1px solid var(--border-subtle)',
         padding: '32px 24px',
         marginTop: 'auto',
@@ -76,7 +76,7 @@ export const App: React.FC = () => {
               width: 32,
               height: 32,
               borderRadius: 6,
-              background: 'linear-gradient(135deg, #0284c7, #38bdf8)',
+              background: 'linear-gradient(135deg, #059669, #10b981)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

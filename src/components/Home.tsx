@@ -37,7 +37,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <h2 style={{
           fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
           fontWeight: 600,
-          color: '#38bdf8',
+          color: '#34d399',
           letterSpacing: '-0.5px',
           marginBottom: 24,
         }}>
@@ -95,8 +95,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             style={{
               padding: '14px 28px',
               fontSize: '1.05rem',
-              borderColor: 'rgba(56, 189, 248, 0.4)',
-              color: '#38bdf8',
+              borderColor: 'rgba(16, 185, 129, 0.4)',
+              color: '#34d399',
             }}
           >
             <Compass size={19} />
@@ -122,11 +122,11 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               width: 44,
               height: 44,
               borderRadius: 10,
-              background: 'rgba(56, 189, 248, 0.15)',
+              background: 'rgba(16, 185, 129, 0.15)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#38bdf8',
+              color: '#10b981',
             }}>
               <Compass size={24} />
             </div>
@@ -217,8 +217,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               display: 'inline-flex',
               padding: '10px',
               borderRadius: '8px',
-              background: 'rgba(56, 189, 248, 0.12)',
-              color: '#38bdf8',
+              background: 'rgba(16, 185, 129, 0.12)',
+              color: '#34d399',
               marginBottom: 16,
             }}>
               <Cpu size={26} />
@@ -238,7 +238,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 gap: 6,
                 background: 'none',
                 border: 'none',
-                color: '#38bdf8',
+                color: '#34d399',
                 fontWeight: 600,
                 fontSize: '0.88rem',
                 cursor: 'pointer',
@@ -255,8 +255,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               display: 'inline-flex',
               padding: '10px',
               borderRadius: '8px',
-              background: 'rgba(168, 85, 247, 0.12)',
-              color: '#c084fc',
+              background: 'rgba(245, 158, 11, 0.12)',
+              color: '#fbbf24',
               marginBottom: 16,
             }}>
               <Compass size={26} />
@@ -276,7 +276,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 gap: 6,
                 background: 'none',
                 border: 'none',
-                color: '#c084fc',
+                color: '#fbbf24',
                 fontWeight: 600,
                 fontSize: '0.88rem',
                 cursor: 'pointer',

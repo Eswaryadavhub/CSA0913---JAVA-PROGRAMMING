@@ -125,11 +125,11 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           width: 40,
           height: 40,
           borderRadius: 8,
-          background: 'rgba(56, 189, 248, 0.15)',
+          background: 'rgba(16, 185, 129, 0.15)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#38bdf8',
+          color: '#34d399',
         }}>
           <Shield size={22} />
         </div>
@@ -169,11 +169,11 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           width: 40,
           height: 40,
           borderRadius: 8,
-          background: 'rgba(168, 85, 247, 0.15)',
+          background: 'rgba(245, 158, 11, 0.15)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#c084fc',
+          color: '#fbbf24',
         }}>
           <Award size={22} />
         </div>

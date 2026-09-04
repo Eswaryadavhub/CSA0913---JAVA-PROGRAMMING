@@ -8,14 +8,14 @@ export const About: React.FC = () => {
       title: 'Develop an Interactive Tower Defence Game Using OOP & Java Swing',
       description:
         'Engineer a complete strategic game architecture applying core Object-Oriented principles (Encapsulation, Inheritance, Polymorphism) with robust component structure.',
-      icon: <Cpu size={24} color="#38bdf8" />,
+      icon: <Cpu size={24} color="#10b981" />,
     },
     {
       id: 2,
       title: 'Implement Intelligent Enemy Navigation Using the A* Pathfinding Algorithm',
       description:
         'Formulate real-time heuristic path calculation ($F = G + H$) allowing autonomous creeps to dynamically discover the optimal route from spawn portal to base while avoiding environmental crags.',
-      icon: <Compass size={24} color="#a855f7" />,
+      icon: <Compass size={24} color="#f59e0b" />,
     },
     {
       id: 3,
@@ -61,7 +61,7 @@ export const About: React.FC = () => {
           gap: 28,
         }}>
           <div>
-            <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#38bdf8', fontWeight: 700, marginBottom: 6 }}>
+            <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#10b981', fontWeight: 700, marginBottom: 6 }}>
               Project Title
             </div>
             <div style={{ fontSize: '1.15rem', fontWeight: 700, color: '#ffffff', lineHeight: 1.4 }}>
@@ -70,7 +70,7 @@ export const About: React.FC = () => {
           </div>
 
           <div>
-            <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#38bdf8', fontWeight: 700, marginBottom: 6 }}>
+            <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#10b981', fontWeight: 700, marginBottom: 6 }}>
               Course
             </div>
             <div style={{ fontSize: '1.15rem', fontWeight: 700, color: '#ffffff' }}>
@@ -79,7 +79,7 @@ export const About: React.FC = () => {
           </div>
 
           <div>
-            <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#38bdf8', fontWeight: 700, marginBottom: 6 }}>
+            <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#10b981', fontWeight: 700, marginBottom: 6 }}>
               Faculty Supervisor
             </div>
             <div style={{ fontSize: '1.15rem', fontWeight: 700, color: '#ffffff' }}>
@@ -93,7 +93,7 @@ export const About: React.FC = () => {
           paddingTop: 24,
           borderTop: '1px solid var(--border-subtle)',
         }}>
-          <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#38bdf8', fontWeight: 700, marginBottom: 12 }}>
+          <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#10b981', fontWeight: 700, marginBottom: 12 }}>
             Project Team Members
           </div>
           <div style={{
@@ -179,7 +179,7 @@ export const About: React.FC = () => {
       {/* Original Java Swing Project Connection (Requirement #28) */}
       <div className="glass-panel-glow" style={{ padding: '32px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-          <RefreshCw size={24} color="#38bdf8" />
+          <RefreshCw size={24} color="#10b981" />
           <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff' }}>
             Original Java Project Connection & Architectural Mapping
           </h2>
@@ -201,7 +201,7 @@ export const About: React.FC = () => {
           }}>
             <thead>
               <tr style={{ background: 'rgba(30, 41, 59, 0.7)', borderBottom: '2px solid var(--border-accent)' }}>
-                <th style={{ padding: '14px 16px', color: '#38bdf8', fontWeight: 700 }}>Architectural Component</th>
+                <th style={{ padding: '14px 16px', color: '#34d399', fontWeight: 700 }}>Architectural Component</th>
                 <th style={{ padding: '14px 16px', color: '#f8fafc', fontWeight: 700 }}>Original Project (Java Swing)</th>
                 <th style={{ padding: '14px 16px', color: '#10b981', fontWeight: 700 }}>Web Demonstration (React + Canvas)</th>
               </tr>
@@ -243,11 +243,16 @@ export const About: React.FC = () => {
 
         {/* Core Java & OOP Paradigms (STEP 7) */}
         <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid var(--border-subtle)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <Cpu size={20} color="#38bdf8" />
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc', margin: 0 }}>
-              Java & Object-Oriented Programming (OOP) Core Pillars
-            </h3>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <Cpu size={20} color="#10b981" />
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc', margin: 0 }}>
+                Java & Object-Oriented Programming (OOP) Core Pillars
+              </h3>
+            </div>
+            <span className="badge badge-emerald" style={{ fontSize: '0.74rem' }}>
+              Academic Source: /java-source/
+            </span>
           </div>
 
           <div style={{
@@ -256,7 +261,7 @@ export const About: React.FC = () => {
             gap: 14,
           }}>
             <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
-              <div style={{ color: '#38bdf8', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+              <div style={{ color: '#34d399', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
                 Java & Java Swing GUI
               </div>
               <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
@@ -274,7 +279,7 @@ export const About: React.FC = () => {
             </div>
 
             <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
-              <div style={{ color: '#a855f7', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+              <div style={{ color: '#fbbf24', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
                 Encapsulation
               </div>
               <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
@@ -292,7 +297,7 @@ export const About: React.FC = () => {
             </div>
 
             <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
-              <div style={{ color: '#f43f5e', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+              <div style={{ color: '#ef4444', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
                 Event Handling & Controls
               </div>
               <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>
@@ -301,7 +306,7 @@ export const About: React.FC = () => {
             </div>
 
             <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 16px', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
-              <div style={{ color: '#06b6d4', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
+              <div style={{ color: '#10b981', fontWeight: 700, fontSize: '0.88rem', marginBottom: 4 }}>
                 A* Pathfinding Algorithm
               </div>
               <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.5 }}>

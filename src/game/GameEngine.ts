@@ -538,7 +538,7 @@ export class GameEngine {
       const fatal = enemy.takeDamage(hero.damage);
       this.stats.damageDealt += hero.damage;
       this.vfx.addDamageText(enemy.x, enemy.y, hero.damage);
-      this.vfx.addHitSparks(enemy.x, enemy.y, '#38bdf8', 6);
+      this.vfx.addHitSparks(enemy.x, enemy.y, '#34d399', 6);
       if (fatal) {
         hero.onKill();
         this.handleEnemyDefeated(enemy);
@@ -741,13 +741,13 @@ export class GameEngine {
           // Prepared stone platform
           ctx.fillStyle = '#0f172a';
           ctx.fillRect(px, py, CELL_SIZE, CELL_SIZE);
-          ctx.strokeStyle = '#38bdf8';
+          ctx.strokeStyle = '#10b981';
           ctx.lineWidth = 1.5;
           ctx.strokeRect(px + 3, py + 3, CELL_SIZE - 6, CELL_SIZE - 6);
           // Platform inner crosshair
           ctx.beginPath();
           ctx.arc(px + CELL_SIZE / 2, py + CELL_SIZE / 2, 4, 0, Math.PI * 2);
-          ctx.fillStyle = '#38bdf8';
+          ctx.fillStyle = '#10b981';
           ctx.fill();
         } else if (val === CellType.OBSTACLE) {
           // Rocky crags / obstacle
@@ -813,19 +813,19 @@ export class GameEngine {
 
           // 3D Extruded Fortress Citadel Wall (Outer Bastion)
           const baseGrad = ctx.createLinearGradient(px + 4, py + 14, px + 46, py + 46);
-          baseGrad.addColorStop(0, '#1e3a8a');
-          baseGrad.addColorStop(0.5, '#0284c7');
-          baseGrad.addColorStop(1, '#0f172a');
+          baseGrad.addColorStop(0, '#064e3b');
+          baseGrad.addColorStop(0.5, '#059669');
+          baseGrad.addColorStop(1, '#022c22');
           ctx.fillStyle = baseGrad;
           ctx.beginPath();
           ctx.roundRect(px + 4, py + 14, 42, 28, 6);
           ctx.fill();
-          ctx.strokeStyle = '#38bdf8';
+          ctx.strokeStyle = '#10b981';
           ctx.lineWidth = 2;
           ctx.stroke();
 
           // Corner Defense Turret Emplacements
-          ctx.fillStyle = '#60a5fa';
+          ctx.fillStyle = '#34d399';
           ctx.fillRect(px + 4, py + 14, 8, 8);
           ctx.fillRect(px + 38, py + 14, 8, 8);
           ctx.fillRect(px + 4, py + 34, 8, 8);
@@ -841,10 +841,10 @@ export class GameEngine {
           ctx.closePath();
           const crystalGrad = ctx.createLinearGradient(px + 15, crystalY - 14, px + 35, crystalY + 12);
           crystalGrad.addColorStop(0, '#ffffff');
-          crystalGrad.addColorStop(0.5, '#38bdf8');
-          crystalGrad.addColorStop(1, '#0369a1');
+          crystalGrad.addColorStop(0.5, '#34d399');
+          crystalGrad.addColorStop(1, '#059669');
           ctx.fillStyle = crystalGrad;
-          ctx.shadowColor = '#38bdf8';
+          ctx.shadowColor = '#10b981';
           ctx.shadowBlur = 12;
           ctx.fill();
           ctx.strokeStyle = '#ffffff';
@@ -855,7 +855,7 @@ export class GameEngine {
           // Holographic Forcefield Shield Ring
           ctx.beginPath();
           ctx.ellipse(px + 25, py + 26, 22, 14, 0, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.45)';
           ctx.lineWidth = 1;
           ctx.setLineDash([3, 3]);
           ctx.stroke();
@@ -874,8 +874,8 @@ export class GameEngine {
 
     // 2. A* Path & Visualizer Overlays (If enabled)
     if (this.showAStarVisuals && this.currentAStarResult) {
-      // Draw closed set nodes (blue tint)
-      ctx.fillStyle = 'rgba(59, 130, 246, 0.22)';
+      // Draw closed set nodes (slate tint)
+      ctx.fillStyle = 'rgba(71, 85, 105, 0.28)';
       for (const node of this.currentAStarResult.closedSetSnapshot) {
         ctx.fillRect(node.x * CELL_SIZE, node.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
       }
@@ -900,9 +900,9 @@ export class GameEngine {
           ctx.lineTo(pt.x, pt.y);
         }
 
-        ctx.strokeStyle = '#38bdf8';
+        ctx.strokeStyle = '#10b981';
         ctx.lineWidth = 4;
-        ctx.shadowColor = '#0284c7';
+        ctx.shadowColor = '#059669';
         ctx.shadowBlur = 12;
         ctx.stroke();
         ctx.shadowBlur = 0;
@@ -934,7 +934,7 @@ export class GameEngine {
           ctx.font = 'bold 9px monospace';
           ctx.fillStyle = '#22c55e';
           ctx.fillText(`G:${details.g}`, px + 3, py + 12);
-          ctx.fillStyle = '#38bdf8';
+          ctx.fillStyle = '#34d399';
           ctx.fillText(`H:${details.h}`, px + 3, py + 26);
           ctx.fillStyle = '#f59e0b';
           ctx.fillText(`F:${details.f}`, px + 3, py + 42);
@@ -980,12 +980,12 @@ export class GameEngine {
       // Banner on top of canvas
       ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
       ctx.fillRect(CANVAS_WIDTH / 2 - 240, 10, 480, 32);
-      ctx.strokeStyle = '#38bdf8';
+      ctx.strokeStyle = '#10b981';
       ctx.lineWidth = 1.5;
       ctx.strokeRect(CANVAS_WIDTH / 2 - 240, 10, 480, 32);
 
       ctx.font = 'bold 13px system-ui, sans-serif';
-      ctx.fillStyle = '#38bdf8';
+      ctx.fillStyle = '#34d399';
       ctx.textAlign = 'center';
       ctx.fillText('DEPLOYMENT MODE: Click any green [+] platform to place tower!', CANVAS_WIDTH / 2, 31);
       ctx.restore();
@@ -997,9 +997,9 @@ export class GameEngine {
       const py = this.hoveredGridNode.y * CELL_SIZE;
       const validation = this.canPlaceTowerAt(this.hoveredGridNode.x, this.hoveredGridNode.y, this.selectedTowerTypeToPlace);
 
-      ctx.fillStyle = validation.allowed ? 'rgba(56, 189, 248, 0.35)' : 'rgba(239, 68, 68, 0.4)';
+      ctx.fillStyle = validation.allowed ? 'rgba(16, 185, 129, 0.35)' : 'rgba(239, 68, 68, 0.4)';
       ctx.fillRect(px, py, CELL_SIZE, CELL_SIZE);
-      ctx.strokeStyle = validation.allowed ? '#38bdf8' : '#ef4444';
+      ctx.strokeStyle = validation.allowed ? '#10b981' : '#ef4444';
       ctx.lineWidth = 2;
       ctx.strokeRect(px, py, CELL_SIZE, CELL_SIZE);
 
@@ -1009,9 +1009,9 @@ export class GameEngine {
       ctx.save();
       ctx.beginPath();
       ctx.arc(center.x, center.y, range, 0, Math.PI * 2);
-      ctx.fillStyle = validation.allowed ? 'rgba(56, 189, 248, 0.12)' : 'rgba(239, 68, 68, 0.15)';
+      ctx.fillStyle = validation.allowed ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.15)';
       ctx.fill();
-      ctx.strokeStyle = validation.allowed ? 'rgba(56, 189, 248, 0.7)' : 'rgba(239, 68, 68, 0.8)';
+      ctx.strokeStyle = validation.allowed ? 'rgba(16, 185, 129, 0.7)' : 'rgba(239, 68, 68, 0.8)';
       ctx.lineWidth = 1.5;
       ctx.setLineDash([5, 4]);
       ctx.stroke();

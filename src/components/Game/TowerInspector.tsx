@@ -41,11 +41,11 @@ export const TowerInspector: React.FC<TowerInspectorProps> = ({
             width: 32,
             height: 32,
             borderRadius: 6,
-            background: 'rgba(56, 189, 248, 0.15)',
+            background: 'rgba(16, 185, 129, 0.15)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#38bdf8',
+            color: '#34d399',
           }}>
             <Shield size={18} />
           </div>
@@ -53,7 +53,7 @@ export const TowerInspector: React.FC<TowerInspectorProps> = ({
             <div style={{ fontWeight: 700, fontSize: '1rem', color: '#ffffff' }}>
               {tower.type} Turret
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 600 }}>
+            <div style={{ fontSize: '0.75rem', color: '#34d399', fontWeight: 600 }}>
               Rank {tower.level} of {tower.maxLevel}
             </div>
           </div>
@@ -121,7 +121,7 @@ export const TowerInspector: React.FC<TowerInspectorProps> = ({
           color: '#cbd5e1',
           marginBottom: 8,
         }}>
-          <Crosshair size={14} color="#38bdf8" />
+          <Crosshair size={14} color="#34d399" />
           Targeting Priority
         </label>
         <div style={{
@@ -143,9 +143,9 @@ export const TowerInspector: React.FC<TowerInspectorProps> = ({
                 style={{
                   padding: '6px 8px',
                   borderRadius: 6,
-                  border: isSelected ? '1px solid #38bdf8' : '1px solid var(--border-subtle)',
-                  background: isSelected ? 'rgba(56, 189, 248, 0.2)' : 'rgba(30, 41, 59, 0.5)',
-                  color: isSelected ? '#38bdf8' : '#94a3b8',
+                  border: isSelected ? '1px solid #10b981' : '1px solid var(--border-subtle)',
+                  background: isSelected ? 'rgba(16, 185, 129, 0.2)' : 'rgba(30, 41, 59, 0.5)',
+                  color: isSelected ? '#34d399' : '#94a3b8',
                   fontSize: '0.75rem',
                   fontWeight: isSelected ? 700 : 500,
                   cursor: 'pointer',

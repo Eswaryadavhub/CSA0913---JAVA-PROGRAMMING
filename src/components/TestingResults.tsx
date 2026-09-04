@@ -375,7 +375,7 @@ export const TestingResults: React.FC = () => {
             <div style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>
               Automated CLI Suite
             </div>
-            <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#38bdf8', fontFamily: 'monospace' }}>
+            <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#34d399', fontFamily: 'monospace' }}>
               vitest run (4 files / 19 tests)
             </div>
           </div>
@@ -402,7 +402,7 @@ export const TestingResults: React.FC = () => {
         }}>
           <thead>
             <tr style={{ background: 'rgba(30, 41, 59, 0.7)', borderBottom: '2px solid var(--border-accent)' }}>
-              <th style={{ padding: '14px 16px', color: '#38bdf8', fontWeight: 700 }}>Test ID</th>
+              <th style={{ padding: '14px 16px', color: '#34d399', fontWeight: 700 }}>Test ID</th>
               <th style={{ padding: '14px 16px', color: '#f8fafc', fontWeight: 700 }}>Test Case Name</th>
               <th style={{ padding: '14px 16px', color: '#94a3b8', fontWeight: 700 }}>Category</th>
               <th style={{ padding: '14px 16px', color: '#cbd5e1', fontWeight: 700 }}>Expected Result</th>
@@ -413,7 +413,7 @@ export const TestingResults: React.FC = () => {
           <tbody>
             {testCases.map((tc) => (
               <tr key={tc.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                <td style={{ padding: '12px 16px', fontWeight: 700, color: '#38bdf8', fontFamily: 'monospace' }}>
+                <td style={{ padding: '12px 16px', fontWeight: 700, color: '#34d399', fontFamily: 'monospace' }}>
                   {tc.id}
                 </td>
                 <td style={{ padding: '12px 16px', fontWeight: 600, color: '#f8fafc' }}>

@@ -46,17 +46,17 @@ export const Team: React.FC = () => {
           width: 64,
           height: 64,
           borderRadius: 16,
-          background: 'rgba(56, 189, 248, 0.15)',
+          background: 'rgba(16, 185, 129, 0.15)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#38bdf8',
+          color: '#34d399',
           flexShrink: 0,
         }}>
           <GraduationCap size={36} />
         </div>
         <div>
-          <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#38bdf8', fontWeight: 700, marginBottom: 4 }}>
+          <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#34d399', fontWeight: 700, marginBottom: 4 }}>
             Faculty Supervisor
           </div>
           <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff', marginBottom: 4 }}>
@@ -88,7 +88,7 @@ export const Team: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#38bdf8',
+              color: '#34d399',
               marginBottom: 16,
             }}>
               <User size={26} />
@@ -100,7 +100,7 @@ export const Team: React.FC = () => {
 
             <div style={{
               fontSize: '0.85rem',
-              color: '#38bdf8',
+              color: '#34d399',
               fontFamily: 'monospace',
               fontWeight: 600,
               marginBottom: 12,

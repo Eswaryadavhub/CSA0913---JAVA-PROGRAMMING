@@ -92,9 +92,9 @@ export const GameControls: React.FC<GameControlsProps> = ({
           style={{
             padding: '9px 14px',
             fontSize: '0.82rem',
-            color: autoWave ? '#38bdf8' : '#94a3b8',
-            borderColor: autoWave ? '#38bdf8' : 'rgba(255, 255, 255, 0.1)',
-            background: autoWave ? 'rgba(56, 189, 248, 0.15)' : 'transparent',
+            color: autoWave ? '#34d399' : '#94a3b8',
+            borderColor: autoWave ? '#10b981' : 'rgba(255, 255, 255, 0.1)',
+            background: autoWave ? 'rgba(16, 185, 129, 0.15)' : 'transparent',
           }}
           title="Automatically launch next wave when current wave is cleared"
         >
@@ -155,7 +155,7 @@ export const GameControls: React.FC<GameControlsProps> = ({
               key={rate}
               onClick={() => onSetSpeed(rate)}
               style={{
-                background: isActive ? '#0284c7' : 'transparent',
+                background: isActive ? '#059669' : 'transparent',
                 color: isActive ? '#ffffff' : '#94a3b8',
                 border: 'none',
                 borderRadius: 6,
@@ -180,8 +180,8 @@ export const GameControls: React.FC<GameControlsProps> = ({
           className="btn-secondary"
           style={{
             padding: '9px 12px',
-            color: showAStar ? '#38bdf8' : '#94a3b8',
-            borderColor: showAStar ? '#38bdf8' : 'var(--border-subtle)',
+            color: showAStar ? '#34d399' : '#94a3b8',
+            borderColor: showAStar ? '#10b981' : 'var(--border-subtle)',
           }}
           title="Toggle real-time A* path & cost visualization [Key: A]"
         >
@@ -196,7 +196,7 @@ export const GameControls: React.FC<GameControlsProps> = ({
           style={{ padding: '9px 12px' }}
           title={soundEnabled ? 'Mute SFX' : 'Unmute SFX'}
         >
-          {soundEnabled ? <Volume2 size={16} color="#38bdf8" /> : <VolumeX size={16} color="#64748b" />}
+          {soundEnabled ? <Volume2 size={16} color="#34d399" /> : <VolumeX size={16} color="#64748b" />}
         </button>
 
         {/* Save Session */}
@@ -237,7 +237,7 @@ export const GameControls: React.FC<GameControlsProps> = ({
         color: '#94a3b8',
       }}>
         <div>
-          <strong style={{ color: '#38bdf8' }}>⌨️ Hotkeys:</strong>{' '}
+          <strong style={{ color: '#34d399' }}>⌨️ Hotkeys:</strong>{' '}
           <span style={{ color: '#ffffff' }}>[T / 1]</span> Gatling |{' '}
           <span style={{ color: '#ffffff' }}>[2]</span> Laser |{' '}
           <span style={{ color: '#ffffff' }}>[3]</span> Mortar |{' '}
@@ -247,7 +247,7 @@ export const GameControls: React.FC<GameControlsProps> = ({
           <span style={{ color: '#ffffff' }}>[S]</span> Sell |{' '}
           <span style={{ color: '#ffffff' }}>[Esc]</span> Deselect
         </div>
-        <div style={{ color: '#38bdf8', fontWeight: 600 }}>
+        <div style={{ color: '#34d399', fontWeight: 600 }}>
           🖱️ Right-Click map to instantly rally Hero Soldier!
         </div>
       </div>

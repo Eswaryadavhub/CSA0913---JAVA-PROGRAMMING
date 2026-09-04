@@ -62,7 +62,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ engine, onSelectTower }) =
     // 1. If hero is selected, left-click sets hero rally point!
     if (engine.isHeroSelected) {
       engine.hero.setRallyPoint(mouseX, mouseY);
-      engine.vfx.addHitSparks(mouseX, mouseY, '#38bdf8', 8);
+      engine.vfx.addHitSparks(mouseX, mouseY, '#34d399', 8);
       onSelectTower();
       return;
     }
@@ -114,7 +114,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ engine, onSelectTower }) =
 
     // Right-click instantly orders the Hero Soldier to move to that location!
     engine.hero.setRallyPoint(mouseX, mouseY);
-    engine.vfx.addHitSparks(mouseX, mouseY, '#38bdf8', 10);
+    engine.vfx.addHitSparks(mouseX, mouseY, '#34d399', 10);
 
     // Also cancel tower placement if active
     if (engine.selectedTowerTypeToPlace) {

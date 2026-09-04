@@ -6,16 +6,16 @@ export const FutureScope: React.FC = () => {
     {
       title: 'Machine Learning & Adaptive AI Pathfinding',
       tag: 'AI Research',
-      color: '#38bdf8',
-      icon: <Cpu size={22} color="#38bdf8" />,
+      color: '#10b981',
+      icon: <Cpu size={22} color="#10b981" />,
       description:
         'Transition from static A* heuristic evaluation to Deep Q-Networks (DQN) and Reinforcement Learning, allowing enemy creeps to dynamically learn the most vulnerable tower choke points over progressive games.',
     },
     {
       title: 'Procedural Map Generation with Cellular Automata',
       tag: 'Algorithm Engine',
-      color: '#10b981',
-      icon: <Map size={22} color="#10b981" />,
+      color: '#059669',
+      icon: <Map size={22} color="#059669" />,
       description:
         'Implement procedural dungeon-generation algorithms (Perlin noise and cellular automata) that guarantee valid connected routes from spawn to base while creating infinite replayable terrain layouts.',
     },
@@ -38,16 +38,16 @@ export const FutureScope: React.FC = () => {
     {
       title: 'Tactical Commander Super-Abilities',
       tag: 'Mechanics',
-      color: '#a855f7',
-      icon: <Sparkles size={22} color="#a855f7" />,
+      color: '#fbbf24',
+      icon: <Sparkles size={22} color="#fbbf24" />,
       description:
-        'Player-triggered emergency active abilities with tactical cooldowns: Orbital Ion Cannon Strike (clearing a 100px radius), Tactical EMP Shockwave (disabling creep movement for 4s), and Field Nanite Repairs.',
+        'Player-triggered emergency active abilities with tactical cooldowns: Tactical Ion Cannon Strike (clearing a 100px radius), Tactical EMP Shockwave (disabling creep movement for 4s), and Field Nanite Repairs.',
     },
     {
       title: 'Native Android & iOS Cross-Platform Deployment',
       tag: 'Deployment',
-      color: '#38bdf8',
-      icon: <Smartphone size={22} color="#38bdf8" />,
+      color: '#34d399',
+      icon: <Smartphone size={22} color="#34d399" />,
       description:
         'Package the web application into native mobile builds for Android and iOS using Capacitor, featuring touch-optimized drag-and-drop turret emplacements, haptic feedback, and offline persistence.',
     },
